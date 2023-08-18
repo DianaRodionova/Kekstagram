@@ -553,6 +553,22 @@ main {
   display: none;
 }
 
+.effect-level__slider {
+  height: 10px;
+}
+
+.effect-level__slider .noUi-connect {
+  background: #c0392b;
+}
+
+.effect-level__slider .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+}
+
 
 /**
  * Блок с эффектами, которые можно применить к изображению
@@ -1203,9 +1219,37 @@ main {
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 3;
+
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.error-message {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
 
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.error-message__text {
+  width: 600px;
+  padding: 50px 20px;
+
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ff4e4e;
+
+  background-color: #3c3614;
+  border-radius: 10px;
 }
 
 .error__inner,

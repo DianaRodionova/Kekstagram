@@ -1,27 +1,27 @@
-import {addPhotos} from './data.js';
 import {openBigPicture} from './big-picture.js';
 
-let pictures = document.querySelector('.pictures');
-let pictureTemplate = document.querySelector('#picture').content;
-let newItemTemplate = pictureTemplate.querySelector('.picture');
+const pictures = document.querySelector('.pictures');
+const pictureTemplate = document.querySelector('#picture').content;
+const newItemTemplate = pictureTemplate.querySelector('.picture');
+const errorMessage = document.querySelector('.error-message');
 
-function renderPictures(items) {
+const renderPictures = _.debounce((items) => {
   for (let i = 0; i < items.length; i++) {
     renderPicture(items[i]);
   }
-}
+}, 500);
 
-function renderPicture(item) {
-  let picture = newItemTemplate.cloneNode(true);
-  let image = picture.querySelector('.picture__img');
-  let comments = picture.querySelector('.picture__comments');
-  let likes = picture.querySelector('.picture__likes');
+const renderPicture = (item) => {
+  const picture = newItemTemplate.cloneNode(true);
+  const image = picture.querySelector('.picture__img');
+  const comments = picture.querySelector('.picture__comments');
+  const likes = picture.querySelector('.picture__likes');
 
   image.src = item.url;
   comments.textContent = item.comments.length;
   likes.textContent = item.likes;
 
-  picture.addEventListener('click', function (evt) {
+  picture.addEventListener('click', (evt) => {
     evt.preventDefault();
 
     openBigPicture(item);
@@ -30,6 +30,16 @@ function renderPicture(item) {
   pictures.appendChild(picture);
 }
 
-renderPictures(addPhotos());
 
-export {renderPictures};
+const failedRenderPictures = () =>{
+  errorMessage.classList.remove('hidden');
+
+
+  setTimeout(errorMessageHide, 5000);
+}
+
+const errorMessageHide = () => {
+  errorMessage.classList.add('hidden');
+}
+
+export {renderPictures, failedRenderPictures};

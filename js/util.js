@@ -1,3 +1,9 @@
+const Keys = {
+  ESCAPE: 'Escape',
+  ESC: 'Esc',
+  ENTER: 'Enter',
+};
+
 const getRandomIntInclusive = (min, max) => {
   if (min < 0 || max < 0) {
     return -1;
@@ -17,11 +23,11 @@ const getStringCount = (text, maxLength) => {
 };
 
 const isEscEvent = (evt) => {
-  return evt.key === 'Escape' || evt.key === 'Esc';
+  return evt.key === Keys.ESCAPE || evt.key === Keys.ESC;
 };
 
 const isEnterEvent = (evt) => {
-  return evt.key === 'Enter';
+  return evt.key === Keys.ENTER;
 };
 
 export {getRandomIntInclusive, getStringCount, isEscEvent, isEnterEvent};
